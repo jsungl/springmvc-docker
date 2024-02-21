@@ -19,6 +19,8 @@ public class HealthCheckController {
     private String serverAddress;
     @Value("${serverName}")
     private String serverName;
+    @Value("${server.secret}")
+    private String serverSecret;
 
     @GetMapping("/hc")
     public ResponseEntity<?> healthCheck() {
@@ -27,6 +29,7 @@ public class HealthCheckController {
         responseData.put("serverAddress", serverAddress);
         responseData.put("serverPort", serverPort);
         responseData.put("env", env);
+        responseData.put("serverSecret", serverSecret);
 
 
         return ResponseEntity.ok(responseData);
